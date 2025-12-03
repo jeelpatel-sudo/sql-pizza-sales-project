@@ -1,43 +1,33 @@
 # sql-pizza-sales-project
-This project performs exploratory data analysis on a pizza sales dataset using MySQL. The analysis focuses on sales performance, order patterns, revenue trends, and pizza category insights using aggregation, ranking, and window functions.
+This project explores a pizza sales dataset using MySQL to practice data cleaning, joining tables, aggregation, and advanced analytical SQL techniques. The goal is to understand sales performance, ordering patterns, and revenue trends using real-world SQL queries. The dataset is sourced from Ayushi0214’s GitHub repository: pizza-sales---SQL (https://github.com/Ayushi0214/pizza-sales---SQL).
 
+**Project Overview**
 
-**Key Analyses Performed**
+The analysis is divided into Basic, Intermediate, and Advanced SQL tasks. Each section builds on the previous one to extract deeper insights from the dataset.
 
-**Sales & Revenue Analysis :**
+**Basic Analysis**
 
-1. Calculated total orders, total revenue, and average daily sales
+1. Total number of orders – counted all orders placed.
+2. Total revenue generated – calculated using pizza prices and quantities.
+3. Highest-priced pizza – identified using price comparison.
+4. Most common pizza size – determined based on order frequency.
+5. Top 5 pizzas by quantity sold – ranked pizzas by total units ordered.
 
-2. Identified the highest-priced pizza and best-selling pizza sizes
+**Intermediate Analysis**
 
-3. Extracted the top 5 most-ordered pizza types
+1. Category-wise quantity sold – joined multiple tables to aggregate totals across pizza categories.
+2. Order distribution by hour – analyzed ordering patterns throughout the day.
+3. Pizza category distribution – identified how many pizza types exist in each category.
+4. Average daily pizzas sold – grouped sales by date to calculate daily averages.
+5. Top 3 pizzas by revenue – used aggregation and ranking to find top performers.
 
-**Category & Quantity Insights :**
+**Advanced Analysis**
 
-1. Aggregated total quantities sold by pizza category
+1. Percentage revenue contribution – calculated each pizza’s share of overall revenue using window functions.
+2. Cumulative revenue over time – built a running total to observe revenue growth trends.
+3. Top 3 pizzas per category by revenue – ranked pizzas within each category using window functions.
 
-2. Counted pizza types per category
+**SQL Concepts Used**
 
-3. Identified top 3 pizzas by revenue using CTEs and window functions
-
-**Time-Based Analysis :**
-
-1. Analyzed order distribution by hour
-
-2. Computed revenue contribution (%) by category
-
-3. Calculated cumulative revenue over time using window functions
-   
-**Techniques Used :**
-
-This project demonstrates SQL concepts such as:
-
-1. CTEs for structured queries
-
-2. Window functions (ROW_NUMBER(), cumulative sums, percent calculations)
-
-3. Aggregations (SUM, COUNT, AVG)
-
-4. Date & string functions (HOUR(), SUBSTRING())
-
-5. Ranking pizza performance within categories
+**This project practices essential SQL skills including:**
+Joins (INNER JOIN), Aggregations (SUM, COUNT, AVG), Grouping & Ordering, Window Functions (Row_number(), Over(), Partition by (), cumulative sums), CTEs for organizing complex queries, Date & time functions such as extracting hours and dates
