@@ -162,8 +162,33 @@ FROM
     Pizzas ON order_details.pizza_id = pizzas.pizza_id
 GROUP BY `dates`)
 
-Select `dates`, Revenue, ROUND(sum(Revenue) over (order by `dates`), 2) as Cumulative_Revenue
-From CTE_Rolling_Total;
+Select 
+	`dates`, Revenue, ROUND(sum(Revenue) over (order by `dates`), 2) as Cumulative_Revenue
+From
+	CTE_Rolling_Total ;
 
 -- 3.Determine the top 3 most ordered pizza types based on revenue for each pizza category.
+-- pizza category , pizza name, revenue, ranking
 
+With CTE_Revenue as 
+(SELECT 
+    pizza_types.category, pizza_types.name, ROUND (SUM(order_details.quantity * pizzas.price), 2) AS Revenue
+FROM
+    pizza_types
+        JOIN
+    pizzas ON pizza_types.pizza_type_id = pizzas.pizza_type_id
+        JOIN
+    order_details ON pizzas.pizza_id = order_details.pizza_id
+GROUP BY pizza_types.category, pizza_types.`name` ),
+
+CTE_Revenue_Rankings (Category, Name, Revenue, Top_3_Most_Ordered_Pizzas) as 
+(SELECT
+	* , row_number () over (partition by `category` order by Revenue) as Top_3_Most_Ordered_Pizzas
+From 
+	CTE_Revenue)
+SELECT 
+    *
+FROM
+    CTE_Revenue_Rankings
+WHERE
+    Top_3_Most_Ordered_Pizzas <= 3;
